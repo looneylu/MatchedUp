@@ -33,6 +33,7 @@
     [self.activityIndicator startAnimating];
     NSArray *permissionsArray = @[@"user_about_me", @"user_interests", @"user_relationships", @"user_birthday", @"user_location", @"user_relationship_details"];
     
+    NSLog(@"login button pressed");
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         [self.activityIndicator stopAnimating];
         self.activityIndicator.hidden = YES;
@@ -52,7 +53,57 @@
         }
         else
         {
+            NSLog(@"doing something");
+            [self updateUserInformation];
             [self performSegueWithIdentifier:@"loginToTabBarSegue" sender:self];
+        }
+    }];
+}
+
+#pragma mark - Helper Methods
+
+- (void) updateUserInformation
+{
+    FBRequest *request = [FBRequest requestForMe];
+    
+    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error)
+        {
+            NSLog(@"%@", result); 
+            
+            NSDictionary *userDictionary = (NSDictionary *) result;
+            NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:8];
+            if (userDictionary[@"name"])
+            {
+                userProfile[@"name"] = userDictionary[@"name"];
+            }
+            if (userDictionary[@"first_name"])
+            {
+                userProfile[@"first_name"] = userDictionary[@"first_name"];
+            }
+            if (userDictionary[@"location"][@"name"])
+            {
+                userProfile[@"location"] = userDictionary[@"location"][@"name"];
+            }
+            if (userDictionary[@"gender"])
+            {
+                userProfile[@"gender"] = userDictionary[@"gender"];
+            }
+            if (userDictionary[@"birthday"])
+            {
+                userProfile[@"birthday"] = userDictionary[@"birthday"];
+            }
+            if (userDictionary[@"interested_in"])
+            {
+                userProfile[@"interested_in"] = userDictionary[@"interested_in"];
+            }
+            
+            [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
+            [[PFUser currentUser] saveInBackground];
+        }
+        else
+        {
+            NSLog(@"Error in FB request: %@", error);
         }
     }];
 }

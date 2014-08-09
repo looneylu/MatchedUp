@@ -24,6 +24,7 @@
 		8480FD9D1996A6B700FAD92E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8480FD9B1996A6B700FAD92E /* InfoPlist.strings */; };
 		8480FD9F1996A6B700FAD92E /* MatchedUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FD9E1996A6B700FAD92E /* MatchedUpTests.m */; };
 		8480FDAA1996A78F00FAD92E /* MULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FDA91996A78F00FAD92E /* MULoginViewController.m */; };
+		8480FDAE1996E09600FAD92E /* MUConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FDAD1996E09600FAD92E /* MUConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		8480FD9E1996A6B700FAD92E /* MatchedUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchedUpTests.m; sourceTree = "<group>"; };
 		8480FDA81996A78F00FAD92E /* MULoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MULoginViewController.h; sourceTree = "<group>"; };
 		8480FDA91996A78F00FAD92E /* MULoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MULoginViewController.m; sourceTree = "<group>"; };
+		8480FDAC1996E09600FAD92E /* MUConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUConstants.h; sourceTree = "<group>"; };
+		8480FDAD1996E09600FAD92E /* MUConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUConstants.m; sourceTree = "<group>"; };
 		CF52766DA1F74AB8A87132AC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +148,8 @@
 				8480FD791996A6B600FAD92E /* InfoPlist.strings */,
 				8480FD7C1996A6B600FAD92E /* main.m */,
 				8480FD7E1996A6B600FAD92E /* MatchedUp-Prefix.pch */,
+				8480FDAC1996E09600FAD92E /* MUConstants.h */,
+				8480FDAD1996E09600FAD92E /* MUConstants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				8480FDAA1996A78F00FAD92E /* MULoginViewController.m in Sources */,
 				8480FD811996A6B600FAD92E /* MUAppDelegate.m in Sources */,
 				8480FD7D1996A6B600FAD92E /* main.m in Sources */,
+				8480FDAE1996E09600FAD92E /* MUConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
