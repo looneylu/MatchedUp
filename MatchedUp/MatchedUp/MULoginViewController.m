@@ -11,6 +11,7 @@
 @interface MULoginViewController ()
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) NSMutableData *imageData;
 
 @end
 
@@ -69,8 +70,12 @@
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error)
         {
-            
             NSDictionary *userDictionary = (NSDictionary *) result;
+            
+            // create URL
+            NSString *facebookID = userDictionary[@"id"];
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:8];
             if (userDictionary[@"name"])
             {
@@ -97,12 +102,43 @@
                 userProfile[kCCUserProfileInterestedInKey] = userDictionary[@"interested_in"];
             }
             
+            if ([pictureURL absoluteString])
+            {
+                userProfile[kCCUserProfilePictureURL] = [pictureURL absoluteString];
+            }
+            
             [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
             [[PFUser currentUser] saveInBackground];
         }
         else
         {
             NSLog(@"Error in FB request: %@", error);
+        }
+    }];
+}
+
+- (void) uploadPFFileToParse: (UIImage *)image
+{
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
+    
+    if (!imageData)
+    {
+        NSLog(@"imageData was not found");
+        return;
+    }
+    
+    PFFile *photoFile = [PFFile fileWithData:imageData];
+    [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            PFObject *photo = [PFObject objectWithClassName:kCCUserPhotoClassKey];
+            [photo setObject:[PFUser currentUser] forKey:kCCUserPhotoUserKey];
+            
+            [photo setObject:photoFile forKey:kCCUserPhotoPictureKey];
+            
+            [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"Photo saved successfully");
+            }];
         }
     }];
 }

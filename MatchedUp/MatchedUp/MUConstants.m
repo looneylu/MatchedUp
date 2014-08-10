@@ -10,6 +10,8 @@
 
 @implementation MUConstants
 
+#pragma - User Profile
+
 NSString *const kCCUserProfileKey                       = @"profile";
 NSString *const kCCUserProfileNameKey                   = @"name";
 NSString *const kCCUserProfileFirstNameKey              = @"firstName";
@@ -17,5 +19,11 @@ NSString *const kCCUserProfileLocationKey               = @"location";
 NSString *const kCCUserProfileGenderKey                 = @"gender";
 NSString *const kCCUserProfileBirthdayKeyy              = @"birthday";
 NSString *const kCCUserProfileInterestedInKey           = @"interestedIn";
+NSString *const kCCUserProfilePictureURL                = @"pictureURL";
 
+#pragma mark - Photo Class
+
+NSString *const kCCUserPhotoClassKey                    = @"Photo";
+NSString *const kCCUserPhotoUserKey                     = @"user";
+NSString *const kCCUserPhotoPictureKey                  = @"image";
 @end
