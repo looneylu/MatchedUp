@@ -143,6 +143,29 @@
     }];
 }
 
+- (void) requestImage
+{
+    PFQuery *query = [PFQuery queryWithClassName:kCCUserPhotoClassKey];
+    [query whereKey:kCCUserPhotoUserKey equalTo:[PFUser currentUser]];
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (number == 0)
+        {
+            PFUser *user = [PFUser currentUser];
+            self.imageData = [[NSMutableData alloc] init];
+            
+            NSURL *profilePictureURL = [NSURL URLWithString:user[kCCUserProfileKey] [kCCUserProfilePictureURL]];
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:4.0f]
+            ;
+            NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+            if (!urlConnection)
+            {
+                NSLog(@"Failed to Download Picture"); 
+            }
+        }
+    }];
+}
+
 /*
 #pragma mark - Navigation
 
