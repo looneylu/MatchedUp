@@ -8,7 +8,7 @@
 
 #import "MULoginViewController.h"
 
-@interface MULoginViewController ()
+@interface MULoginViewController () <NSURLConnectionDataDelegate>
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) NSMutableData *imageData;
@@ -109,6 +109,7 @@
             
             [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
             [[PFUser currentUser] saveInBackground];
+            [self requestImage]; 
         }
         else
         {
@@ -164,6 +165,19 @@
             }
         }
     }];
+}
+
+#pragma mark - Delegate Methods
+
+-(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [self.imageData appendData:data];
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    UIImage *profileImage = [UIImage imageWithData:self.imageData];
+    [self uploadPFFileToParse:profileImage];
 }
 
 /*
