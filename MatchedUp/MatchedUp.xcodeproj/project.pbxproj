@@ -15,8 +15,6 @@
 		8480FD7D1996A6B600FAD92E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FD7C1996A6B600FAD92E /* main.m */; };
 		8480FD811996A6B600FAD92E /* MUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FD801996A6B600FAD92E /* MUAppDelegate.m */; };
 		8480FD841996A6B600FAD92E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8480FD821996A6B600FAD92E /* Main.storyboard */; };
-		8480FD871996A6B600FAD92E /* MUFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FD861996A6B600FAD92E /* MUFirstViewController.m */; };
-		8480FD8A1996A6B600FAD92E /* MUSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FD891996A6B600FAD92E /* MUSecondViewController.m */; };
 		8480FD8C1996A6B600FAD92E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8480FD8B1996A6B600FAD92E /* Images.xcassets */; };
 		8480FD931996A6B700FAD92E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480FD921996A6B700FAD92E /* XCTest.framework */; };
 		8480FD941996A6B700FAD92E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480FD701996A6B600FAD92E /* Foundation.framework */; };
@@ -50,10 +48,6 @@
 		8480FD7F1996A6B600FAD92E /* MUAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MUAppDelegate.h; sourceTree = "<group>"; };
 		8480FD801996A6B600FAD92E /* MUAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MUAppDelegate.m; sourceTree = "<group>"; };
 		8480FD831996A6B600FAD92E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8480FD851996A6B600FAD92E /* MUFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MUFirstViewController.h; sourceTree = "<group>"; };
-		8480FD861996A6B600FAD92E /* MUFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MUFirstViewController.m; sourceTree = "<group>"; };
-		8480FD881996A6B600FAD92E /* MUSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MUSecondViewController.h; sourceTree = "<group>"; };
-		8480FD891996A6B600FAD92E /* MUSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MUSecondViewController.m; sourceTree = "<group>"; };
 		8480FD8B1996A6B600FAD92E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8480FD911996A6B700FAD92E /* MatchedUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchedUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480FD921996A6B700FAD92E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -129,10 +123,6 @@
 			children = (
 				8480FD821996A6B600FAD92E /* Main.storyboard */,
 				8480FDAB1996A79900FAD92E /* Login */,
-				8480FD851996A6B600FAD92E /* MUFirstViewController.h */,
-				8480FD861996A6B600FAD92E /* MUFirstViewController.m */,
-				8480FD881996A6B600FAD92E /* MUSecondViewController.h */,
-				8480FD891996A6B600FAD92E /* MUSecondViewController.m */,
 				8480FD8B1996A6B600FAD92E /* Images.xcassets */,
 				8480FD771996A6B600FAD92E /* Supporting Files */,
 			);
@@ -314,8 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8480FD8A1996A6B600FAD92E /* MUSecondViewController.m in Sources */,
-				8480FD871996A6B600FAD92E /* MUFirstViewController.m in Sources */,
 				8480FDAA1996A78F00FAD92E /* MULoginViewController.m in Sources */,
 				8480FD811996A6B600FAD92E /* MUAppDelegate.m in Sources */,
 				8480FD7D1996A6B600FAD92E /* main.m in Sources */,
