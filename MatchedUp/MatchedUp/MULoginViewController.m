@@ -26,6 +26,15 @@
     self.activityIndicator.hidden = YES;
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
+    {
+        [self updateUserInformation];
+        [self performSegueWithIdentifier:@"loginToTabBarSegue" sender:self];
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)loginButtonPressed:(UIButton *)sender
@@ -34,7 +43,6 @@
     [self.activityIndicator startAnimating];
     NSArray *permissionsArray = @[@"user_about_me", @"user_interests", @"user_relationships", @"user_birthday", @"user_location", @"user_relationship_details"];
     
-    NSLog(@"login button pressed");
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         [self.activityIndicator stopAnimating];
         self.activityIndicator.hidden = YES;
@@ -54,7 +62,6 @@
         }
         else
         {
-            NSLog(@"doing something");
             [self updateUserInformation];
             [self performSegueWithIdentifier:@"loginToTabBarSegue" sender:self];
         }
