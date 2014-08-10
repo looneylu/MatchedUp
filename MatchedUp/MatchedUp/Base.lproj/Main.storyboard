@@ -229,6 +229,7 @@
                                 </state>
                                 <connections>
                                     <action selector="editProfileButtonPressed:" destination="whE-sN-bYi" eventType="touchUpInside" id="vx1-8Z-Iug"/>
+                                    <segue destination="wTV-Nn-1tS" kind="push" identifier="toEditProfile" id="iV5-aF-3Yx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -248,6 +249,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BM-q4-f0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="977" y="180"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="qWg-5e-5b0">
+            <objects>
+                <viewController id="wTV-Nn-1tS" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cf2-MV-g6E"/>
+                        <viewControllerLayoutGuide type="bottom" id="BB6-Ff-yOx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u1I-H8-rPV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbA-31-qgR">
+                                <rect key="frame" x="20" y="121" width="280" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Why are you awesome?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7J-9N-R53">
+                                <rect key="frame" x="20" y="92" width="184" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fY7-ma-dx9">
+                                <rect key="frame" x="20" y="268" width="280" height="280"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ENh-4w-tmb">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="7bc-M1-qhp">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="wTV-Nn-1tS" id="KLM-12-SRJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="fY7-ma-dx9" id="n83-u3-SO7"/>
+                        <outlet property="profilePictureImageView" destination="fY7-ma-dx9" id="mTL-Oa-xLz"/>
+                        <outlet property="saveButton" destination="7bc-M1-qhp" id="72r-oY-8Nd"/>
+                        <outlet property="tagLineTextView" destination="WbA-31-qgR" id="rXx-ug-oTs"/>
+                        <outlet property="textView" destination="WbA-31-qgR" id="3Mf-J9-hjQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ds8-U9-4UT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="180"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GE1-vm-Sli">
