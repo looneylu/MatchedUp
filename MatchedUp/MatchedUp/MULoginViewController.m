@@ -31,7 +31,7 @@
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
     {
         [self updateUserInformation];
-        [self performSegueWithIdentifier:@"loginToHomeSegue" sender:self];
+        [self performSegueWithIdentifier:@"logInToHomeSegue" sender:self];
     }
 }
 
@@ -63,7 +63,7 @@
         else
         {
             [self updateUserInformation];
-            [self performSegueWithIdentifier:@"loginToHomeSegue" sender:self];
+            [self performSegueWithIdentifier:@"logInToHomeSegue" sender:self];
         }
     }];
 }
