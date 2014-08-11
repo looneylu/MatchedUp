@@ -17,9 +17,13 @@ NSString *const kCCUserProfileNameKey                   = @"name";
 NSString *const kCCUserProfileFirstNameKey              = @"firstName";
 NSString *const kCCUserProfileLocationKey               = @"location";
 NSString *const kCCUserProfileGenderKey                 = @"gender";
-NSString *const kCCUserProfileBirthdayKey              = @"birthday";
+NSString *const kCCUserProfileBirthdayKey               = @"birthday";
 NSString *const kCCUserProfileInterestedInKey           = @"interestedIn";
 NSString *const kCCUserProfilePictureURL                = @"pictureURL";
+NSString *const kCCUserProfileRelationshipStatusKey     = @"relationshipStatus";
+NSString *const kCCuserProfileAgeKey                   = @"age";
+
+
 
 #pragma mark - Photo Class
 
