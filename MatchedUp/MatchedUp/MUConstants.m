@@ -12,6 +12,8 @@
 
 #pragma - User Profile
 
+NSString *const kCCUserTagLineKey                       = @"tagLine"; 
+
 NSString *const kCCUserProfileKey                       = @"profile";
 NSString *const kCCUserProfileNameKey                   = @"name";
 NSString *const kCCUserProfileFirstNameKey              = @"firstName";
@@ -21,7 +23,7 @@ NSString *const kCCUserProfileBirthdayKey               = @"birthday";
 NSString *const kCCUserProfileInterestedInKey           = @"interestedIn";
 NSString *const kCCUserProfilePictureURL                = @"pictureURL";
 NSString *const kCCUserProfileRelationshipStatusKey     = @"relationshipStatus";
-NSString *const kCCuserProfileAgeKey                   = @"age";
+NSString *const kCCuserProfileAgeKey                    = @"age";
 
 
 
@@ -30,4 +32,15 @@ NSString *const kCCuserProfileAgeKey                   = @"age";
 NSString *const kCCUserPhotoClassKey                    = @"Photo";
 NSString *const kCCUserPhotoUserKey                     = @"user";
 NSString *const kCCUserPhotoPictureKey                  = @"image";
+
+#pragma mark - Activity Class
+
+NSString *const kCCActivityClassKey                     = @"Activity";
+NSString *const kCCActivityTypeKey                      = @"type";
+NSString *const kCCActivityFromUserKey                  = @"fromUser";
+NSString *const kCCActivityToUserKey                    = @"toUser";
+NSString *const kCCActivityPhotoKey                     = @"photo";
+NSString *const kCCActivityTypeLikeKey                  = @"like";
+NSString *const kCCActivityTypeDislikeKey               = @"dislike";
+
 @end

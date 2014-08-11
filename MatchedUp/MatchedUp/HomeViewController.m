@@ -48,8 +48,8 @@
     self.infoButton.enabled = NO;
     self.photoIndex = 0;
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
-    [query includeKey:@"user"];
+    PFQuery *query = [PFQuery queryWithClassName:kCCUserPhotoClassKey];
+    [query includeKey:kCCUserPhotoUserKey];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         // do additional code
@@ -97,7 +97,7 @@
     if ([self.photos count] > 0)
     {
         self.photo = self.photos[self.photoIndex];
-        PFFile *file = self.photo[@"image"];
+        PFFile *file = self.photo[kCCUserPhotoPictureKey];
         [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             if (!error)
             {
@@ -109,15 +109,15 @@
                 NSLog(@"%@", error);
         }];
         
-        PFQuery *queryForLike = [PFQuery queryWithClassName:@"Activity"];
-        [queryForLike whereKey:@"type" equalTo:@"like"];
-        [queryForLike whereKey:@"photo" equalTo:self.photo];
-        [queryForLike whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+        PFQuery *queryForLike = [PFQuery queryWithClassName:kCCActivityClassKey];
+        [queryForLike whereKey:kCCActivityTypeKey equalTo:kCCActivityTypeLikeKey];
+        [queryForLike whereKey:kCCActivityPhotoKey equalTo:self.photo];
+        [queryForLike whereKey:kCCActivityFromUserKey equalTo:[PFUser currentUser]];
         
-        PFQuery *queryForDislike = [PFQuery queryWithClassName:@"Activity"];
-        [queryForLike whereKey:@"type" equalTo:@"dislike"];
-        [queryForLike whereKey:@"photo" equalTo:self.photo];
-        [queryForLike whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+        PFQuery *queryForDislike = [PFQuery queryWithClassName:kCCActivityClassKey];
+        [queryForLike whereKey:kCCActivityTypeKey equalTo:kCCActivityTypeDislikeKey];
+        [queryForLike whereKey:kCCActivityPhotoKey equalTo:self.photo];
+        [queryForLike whereKey:kCCActivityFromUserKey equalTo:[PFUser currentUser]];
         
         PFQuery *likeAndDislikeQuery = [PFQuery orQueryWithSubqueries:@[queryForLike, queryForDislike]];
         [likeAndDislikeQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -132,12 +132,12 @@
                 else
                 {
                     PFObject *activity = self.activities[0];
-                    if ([activity[@"type"] isEqualToString:@"like"])
+                    if ([activity[kCCActivityTypeKey] isEqualToString:kCCActivityTypeLikeKey])
                     {
                         self.isLikedByCurrentUser = YES;
                         self.isDislikedByCurrentUser = NO;
                     }
-                    else if ([activity[@"type"] isEqualToString:@"dislike"])
+                    else if ([activity[kCCActivityTypeKey] isEqualToString:kCCActivityTypeDislikeKey])
                     {
                         self.isLikedByCurrentUser = NO;
                         self.isDislikedByCurrentUser = YES;
@@ -157,9 +157,9 @@
 
 - (void) updateView
 {
-    self.firstNameLabel.text = self.photo[@"user"][@"profile"][@"firstName"];
-    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[@"user"][@"profile"][@"age"]];
-    self.tagLineLabel.text = self.photo[@"user"][@"tagLine"];
+    self.firstNameLabel.text = self.photo[kCCUserPhotoUserKey][kCCUserProfileKey][kCCUserProfileFirstNameKey];
+    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[kCCUserPhotoUserKey][kCCUserProfileKey][kCCuserProfileAgeKey]];
+    self.tagLineLabel.text = self.photo[kCCUserPhotoUserKey][kCCUserTagLineKey];
     
 }
 
@@ -179,11 +179,11 @@
 
 - (void)saveLike
 {
-    PFObject *likeActivity = [PFObject objectWithClassName:@"Activity"];
-    [likeActivity setObject:@"like" forKey:@"type"];
-    [likeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
-    [likeActivity setObject:[self.photo objectForKey:@"user"] forKey:@"toUser"];
-    [likeActivity setObject:self.photo forKey:@"photo"];
+    PFObject *likeActivity = [PFObject objectWithClassName:kCCActivityClassKey];
+    [likeActivity setObject:kCCActivityTypeLikeKey forKey:kCCActivityTypeKey];
+    [likeActivity setObject:[PFUser currentUser] forKey:kCCActivityFromUserKey];
+    [likeActivity setObject:[self.photo objectForKey:kCCUserPhotoUserKey] forKey:kCCActivityToUserKey];
+    [likeActivity setObject:self.photo forKey:kCCActivityPhotoKey];
     
     [likeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         self.isLikedByCurrentUser = YES;
@@ -195,11 +195,11 @@
 
 - (void)saveDislike
 {
-    PFObject *dislikeActivity = [PFObject objectWithClassName:@"Activity"];
-    [dislikeActivity setObject:@"dislike" forKey:@"type"];
-    [dislikeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
-    [dislikeActivity setObject: [self.photo objectForKey:@"user"] forKey:@"toUser"];
-    [dislikeActivity setObject:self.photo forKey:@"photo"];
+    PFObject *dislikeActivity = [PFObject objectWithClassName:kCCActivityClassKey];
+    [dislikeActivity setObject:kCCActivityTypeDislikeKey forKey:kCCActivityTypeKey];
+    [dislikeActivity setObject:[PFUser currentUser] forKey:kCCActivityFromUserKey];
+    [dislikeActivity setObject: [self.photo objectForKey:kCCUserPhotoUserKey] forKey:kCCActivityToUserKey];
+    [dislikeActivity setObject:self.photo forKey:kCCActivityPhotoKey];
     
     [dislikeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         self.isLikedByCurrentUser = NO;

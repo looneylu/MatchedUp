@@ -12,6 +12,8 @@
 
 #pragma mark - User Profile
 
+extern NSString *const kCCUserTagLineKey;
+
 extern NSString *const kCCUserProfileKey;
 extern NSString *const kCCUserProfileNameKey;
 extern NSString *const kCCUserProfileFirstNameKey;
@@ -30,5 +32,14 @@ extern NSString *const kCCUserPhotoClassKey;
 extern NSString *const kCCUserPhotoUserKey;
 extern NSString *const kCCUserPhotoPictureKey;
 
+#pragma mark - Activity Class
+
+extern NSString *const kCCActivityClassKey;
+extern NSString *const kCCActivityTypeKey;
+extern NSString *const kCCActivityFromUserKey;
+extern NSString *const kCCActivityToUserKey;
+extern NSString *const kCCActivityPhotoKey;
+extern NSString *const kCCActivityTypeLikeKey;
+extern NSString *const kCCActivityTypeDislikeKey;
 
 @end
