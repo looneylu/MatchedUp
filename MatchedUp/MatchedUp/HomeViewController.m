@@ -13,6 +13,9 @@
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic) int photoIndex;
 @property (strong, nonatomic) PFObject *photo;
+@property (nonatomic) BOOL isLikedByCurrentUser;
+@property (nonatomic) BOOL isDislikedByCurrentUser;
+@property (nonatomic,strong) NSMutableArray *activities;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
@@ -35,8 +38,8 @@
     // Do any additional setup after loading the view.
     
     // view controller setup
-    self.likeButton.enabled = NO;
-    self.dislikeButton.enabled = NO;
+//    self.likeButton.enabled = NO;
+//    self.dislikeButton.enabled = NO;
     self.infoButton.enabled = NO;
     self.photoIndex = 0;
     
@@ -69,7 +72,7 @@
 
 - (IBAction)likeButtonPressed:(UIButton *)sender
 {
-
+    [self checkLike];
 }
 
 - (IBAction)infoButtonPressed:(UIButton *)sender
@@ -79,7 +82,7 @@
 
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
-
+    [self checkDislike];
 }
 
 #pragma mark - Helper Methods
@@ -95,7 +98,7 @@
             {
                 UIImage *image = [UIImage imageWithData:data];
                 self.photoImageView.image = image;
-                [self updateView]; 
+                [self updateView];
             }
             else
                 NSLog(@"%@", error);
@@ -109,6 +112,91 @@
     self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[@"user"][@"profile"][@"age"]];
     self.tagLineLabel.text = self.photo[@"user"][@"tagLine"];
     
+}
+
+- (void) setUpNextPhoto
+{
+    if (self.photoIndex + 1 < [self.photos count])
+    {
+        self.photoIndex++;
+        [self queryForCurrentPhotoIndex];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No More Users To View" message:@"Check Back Later for More People" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alertView show];
+    }
+}
+
+- (void)saveLike
+{
+    PFObject *likeActivity = [PFObject objectWithClassName:@"Activity"];
+    [likeActivity setObject:@"like" forKey:@"type"];
+    [likeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
+    [likeActivity setObject:[self.photo objectForKey:@"user"] forKey:@"toUser"];
+    [likeActivity setObject:self.photo forKey:@"photo"];
+    
+    [likeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        self.isLikedByCurrentUser = YES;
+        self.isDislikedByCurrentUser = NO;
+        [self.activities addObject: likeActivity];
+        [self setUpNextPhoto];
+    }];
+}
+
+- (void)saveDislike
+{
+    PFObject *dislikeActivity = [PFObject objectWithClassName:@"Activity"];
+    [dislikeActivity setObject:@"dislike" forKey:@"type"];
+    [dislikeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
+    [dislikeActivity setObject: [self.photo objectForKey:@"user"] forKey:@"toUser"];
+    [dislikeActivity setObject:self.photo forKey:@"photo"];
+    
+    [dislikeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        self.isLikedByCurrentUser = NO;
+        self.isDislikedByCurrentUser = YES;
+        
+        [self.activities addObject:dislikeActivity];
+        [self setUpNextPhoto];
+    }];
+}
+
+- (void)checkLike
+{
+    if (self.isLikedByCurrentUser)
+    {
+        [self setUpNextPhoto];
+        return;
+    }
+    else if (self.isDislikedByCurrentUser)
+    {
+        for (PFObject *activity in self.activities)
+            [activity deleteInBackground];
+        [self.activities removeLastObject];
+        [self saveLike];
+    }
+    else
+        [self saveLike];
+}
+
+- (void) checkDislike
+{
+    if (self.isDislikedByCurrentUser)
+    {
+        [self setUpNextPhoto];
+        return;
+    }
+    else if (self.isLikedByCurrentUser)
+    {
+        for (PFObject *activity in self.activities)
+        {
+            [activity deleteInBackground];
+        }
+        [self.activities removeLastObject];
+        [self saveDislike];
+    }
+    else
+        [self saveDislike];
 }
 
 /*
