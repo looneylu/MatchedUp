@@ -26,6 +26,7 @@
 		8480FDB21998336B00FAD92E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FDB11998336B00FAD92E /* HomeViewController.m */; };
 		8480FDBC199838D000FAD92E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FDBB199838D000FAD92E /* SettingsViewController.m */; };
 		8480FDBF19983B9100FAD92E /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FDBE19983B9100FAD92E /* EditProfileViewController.m */; };
+		8480FDC319983F9C00FAD92E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480FDC219983F9C00FAD92E /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		8480FDBB199838D000FAD92E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8480FDBD19983B9100FAD92E /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		8480FDBE19983B9100FAD92E /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		8480FDC119983F9C00FAD92E /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		8480FDC219983F9C00FAD92E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		CF52766DA1F74AB8A87132AC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,8 +138,9 @@
 				8480FDAF1998332700FAD92E /* Home */,
 				8480FDB31998379D00FAD92E /* Settings */,
 				8480FDC019983B9600FAD92E /* Edit Profile */,
-				8480FD8B1996A6B600FAD92E /* Images.xcassets */,
+				8480FDC419983FA200FAD92E /* Profile */,
 				8480FD771996A6B600FAD92E /* Supporting Files */,
+				8480FD8B1996A6B600FAD92E /* Images.xcassets */,
 			);
 			path = MatchedUp;
 			sourceTree = "<group>";
@@ -208,6 +212,15 @@
 				8480FDBE19983B9100FAD92E /* EditProfileViewController.m */,
 			);
 			name = "Edit Profile";
+			sourceTree = "<group>";
+		};
+		8480FDC419983FA200FAD92E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8480FDC119983F9C00FAD92E /* ProfileViewController.h */,
+				8480FDC219983F9C00FAD92E /* ProfileViewController.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +358,7 @@
 			files = (
 				8480FDAA1996A78F00FAD92E /* MULoginViewController.m in Sources */,
 				8480FD811996A6B600FAD92E /* MUAppDelegate.m in Sources */,
+				8480FDC319983F9C00FAD92E /* ProfileViewController.m in Sources */,
 				8480FDBF19983B9100FAD92E /* EditProfileViewController.m in Sources */,
 				8480FD7D1996A6B600FAD92E /* main.m in Sources */,
 				8480FDBC199838D000FAD92E /* SettingsViewController.m in Sources */,
