@@ -10,6 +10,10 @@
 
 @interface HomeViewController ()
 
+@property (nonatomic, strong) NSArray *photos;
+@property (nonatomic) int photoIndex;
+@property (strong, nonatomic) PFObject *photo;
+
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
@@ -29,6 +33,26 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // view controller setup
+    self.likeButton.enabled = NO;
+    self.dislikeButton.enabled = NO;
+    self.infoButton.enabled = NO;
+    self.photoIndex = 0;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+    [query includeKey:@"user"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        // do additional code
+        if (!error)
+        {
+            self.photos = objects;
+            [self queryForCurrentPhotoIndex]; 
+        }
+        else
+            NSLog(@"%@", error);
+    }];
 }
 
 #pragma mark - IBActions
@@ -56,6 +80,35 @@
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
 
+}
+
+#pragma mark - Helper Methods
+
+- (void) queryForCurrentPhotoIndex
+{
+    if ([self.photos count] > 0)
+    {
+        self.photo = self.photos[self.photoIndex];
+        PFFile *file = self.photo[@"image"];
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error)
+            {
+                UIImage *image = [UIImage imageWithData:data];
+                self.photoImageView.image = image;
+                [self updateView]; 
+            }
+            else
+                NSLog(@"%@", error);
+        }];
+    }
+}
+
+- (void) updateView
+{
+    self.firstNameLabel.text = self.photo[@"user"][@"profile"][@"firstName"];
+    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[@"user"][@"profile"][@"age"]];
+    self.tagLineLabel.text = self.photo[@"user"][@"tagLine"];
+    
 }
 
 /*
