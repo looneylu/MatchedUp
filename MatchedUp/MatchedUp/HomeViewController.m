@@ -10,6 +10,8 @@
 
 @interface HomeViewController ()
 
+#pragma mark - Properties
+
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic) int photoIndex;
 @property (strong, nonatomic) PFObject *photo;
@@ -29,8 +31,11 @@
 
 @end
 
+#pragma mark - Implementation of HomeViewController
+
 @implementation HomeViewController
 
+#pragma mark - viewDidLoad
 
 - (void)viewDidLoad
 {
@@ -102,6 +107,50 @@
             }
             else
                 NSLog(@"%@", error);
+        }];
+        
+        PFQuery *queryForLike = [PFQuery queryWithClassName:@"Activity"];
+        [queryForLike whereKey:@"type" equalTo:@"like"];
+        [queryForLike whereKey:@"photo" equalTo:self.photo];
+        [queryForLike whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+        
+        PFQuery *queryForDislike = [PFQuery queryWithClassName:@"Activity"];
+        [queryForLike whereKey:@"type" equalTo:@"dislike"];
+        [queryForLike whereKey:@"photo" equalTo:self.photo];
+        [queryForLike whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+        
+        PFQuery *likeAndDislikeQuery = [PFQuery orQueryWithSubqueries:@[queryForLike, queryForDislike]];
+        [likeAndDislikeQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error)
+            {
+                self.activities = [objects mutableCopy];
+                if ([self.activities count] == 0)
+                {
+                    self.isLikedByCurrentUser = NO;
+                    self.isDislikedByCurrentUser = NO;
+                }
+                else
+                {
+                    PFObject *activity = self.activities[0];
+                    if ([activity[@"type"] isEqualToString:@"like"])
+                    {
+                        self.isLikedByCurrentUser = YES;
+                        self.isDislikedByCurrentUser = NO;
+                    }
+                    else if ([activity[@"type"] isEqualToString:@"dislike"])
+                    {
+                        self.isLikedByCurrentUser = NO;
+                        self.isDislikedByCurrentUser = YES;
+                    }
+                    else
+                    {
+                        //some other type of activity
+                    }
+                }
+                
+                self.likeButton.enabled = YES;
+                self.dislikeButton.enabled = YES;
+            }
         }];
     }
 }
