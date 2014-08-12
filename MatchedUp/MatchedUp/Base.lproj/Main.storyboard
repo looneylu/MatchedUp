@@ -439,7 +439,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xb-tI-DtL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="923"/>
+            <point key="canvasLocation" x="950" y="924"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="Qjy-Ox-ftq">
+            <objects>
+                <viewController id="VDg-bR-6N9" customClass="ChatViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5yi-jC-2mT"/>
+                        <viewControllerLayoutGuide type="bottom" id="9GB-ED-Gr5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kpd-5n-rfg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hlj-nR-Kx9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d03-F6-GWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1989" y="897"/>
         </scene>
         <!--Matches View Controller-->
         <scene sceneID="uaU-RQ-tvS">
@@ -490,11 +509,12 @@
                     <navigationItem key="navigationItem" id="bL2-Dh-t9G"/>
                     <connections>
                         <outlet property="matchesTableView" destination="vIs-i8-WWs" id="rgT-HR-Me1"/>
+                        <segue destination="VDg-bR-6N9" kind="push" identifier="matchesToChatSegue" id="kdP-81-MTB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FG0-WO-0dD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1033" y="1110"/>
+            <point key="canvasLocation" x="1554" y="897"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GE1-vm-Sli">

@@ -12,6 +12,7 @@
 		8463E97D1999B07F00DE8C69 /* MudZone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8463E97C1999B07F00DE8C69 /* MudZone.jpg */; };
 		8463E980199A7FF400DE8C69 /* MatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463E97F199A7FF400DE8C69 /* MatchViewController.m */; };
 		8463E987199A84E700DE8C69 /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463E986199A84E700DE8C69 /* MatchesViewController.m */; };
+		8463E98C199A89FB00DE8C69 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463E98B199A89FB00DE8C69 /* ChatViewController.m */; };
 		8480FD711996A6B600FAD92E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480FD701996A6B600FAD92E /* Foundation.framework */; };
 		8480FD731996A6B600FAD92E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480FD721996A6B600FAD92E /* CoreGraphics.framework */; };
 		8480FD751996A6B600FAD92E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480FD741996A6B600FAD92E /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		8463E97F199A7FF400DE8C69 /* MatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchViewController.m; sourceTree = "<group>"; };
 		8463E985199A84E700DE8C69 /* MatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesViewController.h; sourceTree = "<group>"; };
 		8463E986199A84E700DE8C69 /* MatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesViewController.m; sourceTree = "<group>"; };
+		8463E98A199A89FB00DE8C69 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		8463E98B199A89FB00DE8C69 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		8480FD6D1996A6B600FAD92E /* MatchedUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchedUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480FD701996A6B600FAD92E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8480FD721996A6B600FAD92E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +139,15 @@
 			name = Matches;
 			sourceTree = "<group>";
 		};
+		8463E98D199A8A0600DE8C69 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				8463E98A199A89FB00DE8C69 /* ChatViewController.h */,
+				8463E98B199A89FB00DE8C69 /* ChatViewController.m */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		8480FD641996A6B600FAD92E = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				8480FD821996A6B600FAD92E /* Main.storyboard */,
+				8463E98D199A8A0600DE8C69 /* Chat */,
 				8480FDAB1996A79900FAD92E /* Login */,
 				8480FDAF1998332700FAD92E /* Home */,
 				8463E981199A7FFE00DE8C69 /* Match */,
@@ -401,6 +414,7 @@
 			files = (
 				8480FDAA1996A78F00FAD92E /* MULoginViewController.m in Sources */,
 				8463E987199A84E700DE8C69 /* MatchesViewController.m in Sources */,
+				8463E98C199A89FB00DE8C69 /* ChatViewController.m in Sources */,
 				8480FD811996A6B600FAD92E /* MUAppDelegate.m in Sources */,
 				8480FDC319983F9C00FAD92E /* ProfileViewController.m in Sources */,
 				8480FDBF19983B9100FAD92E /* EditProfileViewController.m in Sources */,
