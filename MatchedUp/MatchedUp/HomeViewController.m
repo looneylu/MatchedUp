@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "TestUser.h"
 
 @interface HomeViewController ()
 
@@ -41,14 +42,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    [TestUser saveTestUserToParse];
     
     // view controller setup
-//    self.likeButton.enabled = NO;
-//    self.dislikeButton.enabled = NO;
+    self.likeButton.enabled = NO;
+    self.dislikeButton.enabled = NO;
     self.infoButton.enabled = NO;
     self.photoIndex = 0;
     
     PFQuery *query = [PFQuery queryWithClassName:kCCUserPhotoClassKey];
+    [query whereKey:kCCUserPhotoUserKey notEqualTo:[PFUser currentUser]];
     [query includeKey:kCCUserPhotoUserKey];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
