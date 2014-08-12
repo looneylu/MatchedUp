@@ -25,7 +25,6 @@ extern NSString *const kCCUserProfilePictureURL;
 extern NSString *const kCCUserProfileRelationshipStatusKey;
 extern NSString *const kCCuserProfileAgeKey;
 
-
 #pragma mark - Photo Class
 
 extern NSString *const kCCUserPhotoClassKey;
@@ -41,5 +40,12 @@ extern NSString *const kCCActivityToUserKey;
 extern NSString *const kCCActivityPhotoKey;
 extern NSString *const kCCActivityTypeLikeKey;
 extern NSString *const kCCActivityTypeDislikeKey;
+
+#pragma mark - Settings
+
+extern NSString *const kCCMenEnabledKey;
+extern NSString *const kCCWomenEnabledKey;
+extern NSString *const kCCSingleEnabledKey;
+extern NSString *const kCCAgeMaxKey;
 
 @end

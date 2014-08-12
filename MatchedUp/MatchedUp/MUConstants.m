@@ -25,8 +25,6 @@ NSString *const kCCUserProfilePictureURL                = @"pictureURL";
 NSString *const kCCUserProfileRelationshipStatusKey     = @"relationshipStatus";
 NSString *const kCCuserProfileAgeKey                    = @"age";
 
-
-
 #pragma mark - Photo Class
 
 NSString *const kCCUserPhotoClassKey                    = @"Photo";
@@ -42,5 +40,12 @@ NSString *const kCCActivityToUserKey                    = @"toUser";
 NSString *const kCCActivityPhotoKey                     = @"photo";
 NSString *const kCCActivityTypeLikeKey                  = @"like";
 NSString *const kCCActivityTypeDislikeKey               = @"dislike";
+
+#pragma mark - Settings
+
+NSString *const kCCMenEnabledKey                        = @"men";
+NSString *const kCCWomenEnabledKey                      = @"women";
+NSString *const kCCSingleEnabledKey                     = @"single";
+NSString *const kCCAgeMaxKey                            = @"ageMax";
 
 @end

@@ -87,7 +87,7 @@
 
 - (IBAction)infoButtonPressed:(UIButton *)sender
 {
-    [self performSegueWithIdentifier:@"homeToProfileSegue" sender:nil];
+    [self performSegueWithIdentifier:@"hometoProfileSegue" sender:nil];
 }
 
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
@@ -263,7 +263,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if ([segue.identifier isEqualToString:@"homeToProfileSegue"])
+    if ([segue.identifier isEqualToString:@"hometoProfileSegue"])
     {
         ProfileViewController *profileVC = segue.destinationViewController;
         profileVC.photo = self.photo;
