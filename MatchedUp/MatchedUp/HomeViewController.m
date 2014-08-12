@@ -97,6 +97,20 @@
 
 #pragma mark - Helper Methods
 
+- (void) checkForPhotoUserLikes
+{
+    PFQuery *query = [PFQuery queryWithClassName:kCCActivityClassKey];
+    [query whereKey:kCCActivityFromUserKey equalTo:self.photo[kCCUserPhotoUserKey]];
+    [query whereKey:kCCActivityToUserKey equalTo:[PFUser currentUser]];
+    [query whereKey:kCCActivityTypeKey equalTo:kCCActivityTypeLikeKey];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] > 0)
+        {
+            //create our chatroom here
+        }
+    }];
+}
+
 - (void) queryForCurrentPhotoIndex
 {
     if ([self.photos count] > 0)

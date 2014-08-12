@@ -250,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BM-q4-f0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1033" y="-418"/>
+            <point key="canvasLocation" x="961" y="-470"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="sQT-B0-nis">
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFV-fW-sog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="-418"/>
+            <point key="canvasLocation" x="1437" y="-470"/>
         </scene>
         <!--Match View Controller-->
         <scene sceneID="Edt-fM-Jlq">
@@ -359,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOP-9Q-z2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="242"/>
+            <point key="canvasLocation" x="1905" y="-90"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="DMQ-hl-Wd9">
@@ -458,7 +458,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d03-F6-GWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1989" y="897"/>
+            <point key="canvasLocation" x="1905" y="621"/>
         </scene>
         <!--Matches View Controller-->
         <scene sceneID="uaU-RQ-tvS">
@@ -514,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FG0-WO-0dD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1554" y="897"/>
+            <point key="canvasLocation" x="1386" y="621"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GE1-vm-Sli">
