@@ -10,6 +10,7 @@
 		2B2371A5C31643BD97F7AE5D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E4E032C4BD40EFBEB2A8E7 /* libPods.a */; };
 		8463E97A1999AE2100DE8C69 /* TestUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463E9791999AE2100DE8C69 /* TestUser.m */; };
 		8463E97D1999B07F00DE8C69 /* MudZone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8463E97C1999B07F00DE8C69 /* MudZone.jpg */; };
+		8463E980199A7FF400DE8C69 /* MatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463E97F199A7FF400DE8C69 /* MatchViewController.m */; };
 		8480FD711996A6B600FAD92E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480FD701996A6B600FAD92E /* Foundation.framework */; };
 		8480FD731996A6B600FAD92E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480FD721996A6B600FAD92E /* CoreGraphics.framework */; };
 		8480FD751996A6B600FAD92E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480FD741996A6B600FAD92E /* UIKit.framework */; };
@@ -46,6 +47,8 @@
 		8463E9781999AE2100DE8C69 /* TestUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUser.h; sourceTree = "<group>"; };
 		8463E9791999AE2100DE8C69 /* TestUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUser.m; sourceTree = "<group>"; };
 		8463E97C1999B07F00DE8C69 /* MudZone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MudZone.jpg; sourceTree = "<group>"; };
+		8463E97E199A7FF400DE8C69 /* MatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchViewController.h; sourceTree = "<group>"; };
+		8463E97F199A7FF400DE8C69 /* MatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchViewController.m; sourceTree = "<group>"; };
 		8480FD6D1996A6B600FAD92E /* MatchedUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchedUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480FD701996A6B600FAD92E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8480FD721996A6B600FAD92E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,6 +115,15 @@
 			name = "Test User Model";
 			sourceTree = "<group>";
 		};
+		8463E981199A7FFE00DE8C69 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				8463E97E199A7FF400DE8C69 /* MatchViewController.h */,
+				8463E97F199A7FF400DE8C69 /* MatchViewController.m */,
+			);
+			name = Match;
+			sourceTree = "<group>";
+		};
 		8480FD641996A6B600FAD92E = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +162,7 @@
 				8480FD821996A6B600FAD92E /* Main.storyboard */,
 				8480FDAB1996A79900FAD92E /* Login */,
 				8480FDAF1998332700FAD92E /* Home */,
+				8463E981199A7FFE00DE8C69 /* Match */,
 				8480FDB31998379D00FAD92E /* Settings */,
 				8480FDC019983B9600FAD92E /* Edit Profile */,
 				8480FDC419983FA200FAD92E /* Profile */,
@@ -381,6 +394,7 @@
 				8480FD7D1996A6B600FAD92E /* main.m in Sources */,
 				8480FDBC199838D000FAD92E /* SettingsViewController.m in Sources */,
 				8480FDB21998336B00FAD92E /* HomeViewController.m in Sources */,
+				8463E980199A7FF400DE8C69 /* MatchViewController.m in Sources */,
 				8480FDAE1996E09600FAD92E /* MUConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

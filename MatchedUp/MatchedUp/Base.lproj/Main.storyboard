@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvo-NP-uUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="180"/>
+            <point key="canvasLocation" x="143" y="242"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="l2h-4b-9Z5">
@@ -140,11 +140,12 @@
                         <outlet property="settingsBarButtonItem" destination="M8A-aL-I6f" id="4Ly-Xr-7FF"/>
                         <outlet property="tagLineLabel" destination="D9i-6v-vty" id="GGv-qb-gig"/>
                         <segue destination="RSd-8y-6kA" kind="push" identifier="hometoProfileSegue" id="e0m-dg-EjG"/>
+                        <segue destination="N0l-SL-tcR" kind="modal" identifier="homeToMatchSegue" id="CXx-D1-LHh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRQ-W9-guj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="572" y="180"/>
+            <point key="canvasLocation" x="583" y="242"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="0Q2-RQ-3zH">
@@ -248,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BM-q4-f0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="-180"/>
+            <point key="canvasLocation" x="1028" y="-160"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="sQT-B0-nis">
@@ -298,7 +299,66 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFV-fW-sog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1459" y="-180"/>
+            <point key="canvasLocation" x="1509" y="-418"/>
+        </scene>
+        <!--Match View Controller-->
+        <scene sceneID="Edt-fM-Jlq">
+            <objects>
+                <viewController id="N0l-SL-tcR" customClass="MatchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wAF-rQ-l1w"/>
+                        <viewControllerLayoutGuide type="bottom" id="h08-Ue-AHT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dOV-og-cDd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I95-vQ-O3k">
+                                <rect key="frame" x="20" y="67" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-qM-Rxs">
+                                <rect key="frame" x="170" y="67" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="It's a Match!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1LH-WL-7gJ">
+                                <rect key="frame" x="113" y="273" width="95" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUN-EH-0xI">
+                                <rect key="frame" x="20" y="333" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View Chats">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewChatsButtonPressed:" destination="N0l-SL-tcR" eventType="touchUpInside" id="W9H-wm-4kD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCC-Z8-AdK">
+                                <rect key="frame" x="191" y="333" width="109" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Keep Searching">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="keepSearchingButtonPressed:" destination="N0l-SL-tcR" eventType="touchUpInside" id="1t0-zW-wEQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FAZ-8h-KGY"/>
+                    <connections>
+                        <outlet property="currentUserImageView" destination="OXv-qM-Rxs" id="8JG-nz-E8u"/>
+                        <outlet property="matchedUserImageView" destination="I95-vQ-O3k" id="8um-x9-C73"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GOP-9Q-z2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1509" y="242"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="DMQ-hl-Wd9">
@@ -378,7 +438,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xb-tI-DtL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="475"/>
+            <point key="canvasLocation" x="1028" y="589"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GE1-vm-Sli">
@@ -396,7 +456,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSc-6P-4ff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-288" y="180"/>
+            <point key="canvasLocation" x="-288" y="242"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
