@@ -22,13 +22,30 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+   PFQuery *query = [PFQuery queryWithClassName:kCCUserPhotoClassKey];
+    [query whereKey:kCCUserPhotoUserKey equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] > 0)
+        {
+            PFObject *photo = objects[0];
+            PFFile *pictureFile = [photo objectForKey:kCCUserPhotoPictureKey];
+            [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                self.profilePictureImageView.image = [UIImage imageWithData:data];
+            }];
+        }
+    }];
+    self.tagLineTextView.text = [[PFUser currentUser] objectForKey:kCCUserTagLineKey];
 }
 
 #pragma mark - IBACtions
 
 - (IBAction)saveButtonPressed:(id)sender
 {
-
+    [[PFUser currentUser] setObject:self.tagLineTextView.text forKey:kCCUserTagLineKey];
+    [[PFUser currentUser] saveInBackground];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

@@ -16,7 +16,7 @@
 @property (strong, nonatomic) IBOutlet UISwitch *showWomenSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *singlesOnlySwitch;
 @property (strong, nonatomic) IBOutlet UIButton *logOutButton;
-@property (strong, nonatomic) IBOutlet UIButton *editProfileButton;
+
 
 @end
 
@@ -43,10 +43,16 @@
 
 #pragma mark - IBActions
 
-- (IBAction)logOutButtonPressed:(id)sender {
+- (IBAction)logOutButtonPressed:(id)sender
+{
+    [PFUser logOut];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)editProfileButtonPressed:(id)sender {
+- (IBAction)editProfileButtonPressed:(UIButton *)sender
+{
+    NSLog(@"Edit Profile Button Pressed");
+//    [self performSegueWithIdentifier:@"toEditProfileSegue" sender:self];
 }
 
 #pragma mark - Helper Methods

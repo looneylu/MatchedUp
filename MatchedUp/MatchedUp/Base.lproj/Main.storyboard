@@ -199,15 +199,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFO-eO-y6E">
-                                <rect key="frame" x="256" y="169" width="51" height="31"/>
+                                <rect key="frame" x="251" y="169" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ww-oK-Dvm">
-                                <rect key="frame" x="256" y="208" width="51" height="31"/>
+                                <rect key="frame" x="251" y="208" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qPm-mw-eBk">
-                                <rect key="frame" x="256" y="271" width="51" height="31"/>
+                                <rect key="frame" x="251" y="271" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cho-ry-iFI">
@@ -221,16 +221,16 @@
                                     <action selector="logOutButtonPressed:" destination="whE-sN-bYi" eventType="touchUpInside" id="tHe-xN-oZ6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rz-ve-ioE">
-                                <rect key="frame" x="230" y="518" width="75" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16w-Zt-yyE">
+                                <rect key="frame" x="225" y="518" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Edit Profile">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="editProfileButtonPressed:" destination="whE-sN-bYi" eventType="touchUpInside" id="vx1-8Z-Iug"/>
-                                    <segue destination="wTV-Nn-1tS" kind="push" identifier="toEditProfile" id="iV5-aF-3Yx"/>
+                                    <action selector="editProfileButtonPressed:" destination="whE-sN-bYi" eventType="touchUpInside" id="mlB-cQ-EER"/>
+                                    <segue destination="dZv-uI-9My" kind="push" id="DaV-hO-Scl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -240,7 +240,6 @@
                     <connections>
                         <outlet property="ageLabel" destination="qKd-gf-aM1" id="mZb-rf-UDA"/>
                         <outlet property="ageSlider" destination="wHU-Cy-bjo" id="rZv-yd-oBJ"/>
-                        <outlet property="editProfileButton" destination="4rz-ve-ioE" id="c8R-6f-rXE"/>
                         <outlet property="logOutButton" destination="cho-ry-iFI" id="Es5-xM-zcI"/>
                         <outlet property="showMenSwitch" destination="fFO-eO-y6E" id="Tdz-3y-isq"/>
                         <outlet property="showWomenSwitch" destination="2Ww-oK-Dvm" id="EXE-SK-zIv"/>
@@ -249,58 +248,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BM-q4-f0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="-180"/>
+            <point key="canvasLocation" x="1028" y="-180"/>
         </scene>
         <!--Edit Profile View Controller-->
-        <scene sceneID="qWg-5e-5b0">
+        <scene sceneID="sQT-B0-nis">
             <objects>
-                <viewController id="wTV-Nn-1tS" customClass="EditProfileViewController" sceneMemberID="viewController">
+                <viewController id="dZv-uI-9My" customClass="EditProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Cf2-MV-g6E"/>
-                        <viewControllerLayoutGuide type="bottom" id="BB6-Ff-yOx"/>
+                        <viewControllerLayoutGuide type="top" id="4Ed-Z5-xrx"/>
+                        <viewControllerLayoutGuide type="bottom" id="1VF-LQ-fWq"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="u1I-H8-rPV">
+                    <view key="view" contentMode="scaleToFill" id="jCo-9W-EaQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbA-31-qgR">
-                                <rect key="frame" x="20" y="121" width="280" height="60"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Why are you awesome?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Kx-wL-p4J">
+                                <rect key="frame" x="20" y="85" width="184" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Txx-eZ-r1u">
+                                <rect key="frame" x="20" y="114" width="280" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Why are you awesome?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7J-9N-R53">
-                                <rect key="frame" x="20" y="92" width="184" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fY7-ma-dx9">
-                                <rect key="frame" x="20" y="268" width="280" height="280"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEb-Wz-Hni">
+                                <rect key="frame" x="20" y="264" width="280" height="284"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ENh-4w-tmb">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="7bc-M1-qhp">
+                    <navigationItem key="navigationItem" id="v4n-sJ-F9Z">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="NjB-3N-PR3">
                             <connections>
-                                <action selector="saveButtonPressed:" destination="wTV-Nn-1tS" id="KLM-12-SRJ"/>
+                                <action selector="saveButtonPressed:" destination="dZv-uI-9My" id="rha-Bu-mGK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="fY7-ma-dx9" id="n83-u3-SO7"/>
-                        <outlet property="profilePictureImageView" destination="fY7-ma-dx9" id="mTL-Oa-xLz"/>
-                        <outlet property="saveButton" destination="7bc-M1-qhp" id="72r-oY-8Nd"/>
-                        <outlet property="tagLineTextView" destination="WbA-31-qgR" id="rXx-ug-oTs"/>
-                        <outlet property="textView" destination="WbA-31-qgR" id="3Mf-J9-hjQ"/>
+                        <outlet property="profilePictureImageView" destination="TEb-Wz-Hni" id="ieO-Zf-7sp"/>
+                        <outlet property="saveButton" destination="NjB-3N-PR3" id="vU8-Lx-YPo"/>
+                        <outlet property="tagLineTextView" destination="Txx-eZ-r1u" id="QRX-sY-CMn"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ds8-U9-4UT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wFV-fW-sog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1432" y="-180"/>
+            <point key="canvasLocation" x="1459" y="-180"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="DMQ-hl-Wd9">
