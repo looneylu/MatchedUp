@@ -19,7 +19,7 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error)
         {
-            NSDictionary *profile = @{@"age" : @28, @"birthday" : @"11/22/1985", @"firstName" : @"Julie", @"gender" : @"female", @"location" : @"Berlin, Germany", @"name" : @"Julie Adams"};
+            NSDictionary *profile = @{@"age" : @28, @"birthday" : @"11/22/1985", @"firstName" : @"José", @"gender" : @"male", @"location" : @"Berlin, Germany", @"name" : @"José Offerman"};
             
             [newUser setObject:profile forKey:@"profile"];
             [newUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

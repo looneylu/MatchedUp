@@ -43,7 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    [TestUser saveTestUserToParse];
+//    [TestUser saveTestUserToParse];
     
     // view controller setup
     self.likeButton.enabled = NO;

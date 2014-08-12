@@ -43,9 +43,13 @@
     [self.activityIndicator startAnimating];
     NSArray *permissionsArray = @[@"user_about_me", @"user_interests", @"user_relationships", @"user_birthday", @"user_location", @"user_relationship_details"];
     
+    NSLog(@"About to enter block"); 
+    
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         [self.activityIndicator stopAnimating];
         self.activityIndicator.hidden = YES;
+        
+        NSLog(@"Entered block");
         
         if (!user)
         {
