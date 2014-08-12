@@ -9,8 +9,9 @@
 #import "HomeViewController.h"
 #import "TestUser.h"
 #import "ProfileViewController.h"
+#import "MatchViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <MatchViewControllerDelegate>
 
 #pragma mark - Properties
 
@@ -65,6 +66,15 @@
         }
         else
             NSLog(@"%@", error);
+    }];
+}
+
+#pragma mark - Delegate methods
+
+- (void)presentMatchesViewController
+{
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
     }];
 }
 
@@ -308,6 +318,12 @@
     {
         ProfileViewController *profileVC = segue.destinationViewController;
         profileVC.photo = self.photo;
+    }
+    else if ([segue.identifier isEqualToString:@"homeToMatchSegue"])
+    {
+        MatchViewController *mvc = segue.destinationViewController;
+        mvc.matchedUserImage = self.photoImageView.image;
+        mvc.delegate = self;
     }
 }
 
