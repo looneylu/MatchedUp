@@ -106,7 +106,33 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ([objects count] > 0)
         {
-            //create our chatroom here
+            [self createChatRoom];
+        }
+    }];
+}
+
+- (void) createChatRoom
+{
+    PFQuery *queryForChatroom = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatroom whereKey:@"user1" equalTo:[PFUser currentUser]];
+    [queryForChatroom whereKey:@"user2" equalTo:self.photo[kCCUserPhotoUserKey]];
+    
+    PFQuery *queryForChatroomInverse = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatroomInverse whereKey:@"user1" equalTo:self.photo[kCCUserPhotoUserKey]];
+    [queryForChatroomInverse whereKey:@"user2" equalTo:[PFUser currentUser]];
+    
+    PFQuery *combinedQuery = [PFQuery orQueryWithSubqueries:@[queryForChatroom, queryForChatroomInverse]];
+    
+    [combinedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] == 0)
+        {
+            PFObject *chatroom = [PFObject objectWithClassName:@"ChatRoom"];
+            [chatroom setObject:[PFUser currentUser] forKey:@"user1"];
+            [chatroom setObject:self.photo[kCCUserPhotoUserKey] forKey:@"user2"];
+            
+            [chatroom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
+            }];
         }
     }];
 }
@@ -226,6 +252,7 @@
         self.isDislikedByCurrentUser = YES;
         
         [self.activities addObject:dislikeActivity];
+        [self checkForPhotoUserLikes];
         [self setUpNextPhoto];
     }];
 }
