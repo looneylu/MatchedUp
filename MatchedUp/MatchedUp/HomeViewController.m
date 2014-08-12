@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "TestUser.h"
+#import "ProfileViewController.h"
 
 @interface HomeViewController ()
 
@@ -86,7 +87,7 @@
 
 - (IBAction)infoButtonPressed:(UIButton *)sender
 {
-
+    [self performSegueWithIdentifier:@"homeToProfileSegue" sender:nil];
 }
 
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
@@ -154,6 +155,7 @@
                 
                 self.likeButton.enabled = YES;
                 self.dislikeButton.enabled = YES;
+                self.infoButton.enabled = YES; 
             }
         }];
     }
@@ -252,7 +254,7 @@
         [self saveDislike];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -260,7 +262,13 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"homeToProfileSegue"])
+    {
+        ProfileViewController *profileVC = segue.destinationViewController;
+        profileVC.photo = self.photo;
+    }
 }
-*/
+
 
 @end
