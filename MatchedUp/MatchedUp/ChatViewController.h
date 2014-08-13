@@ -10,4 +10,6 @@
 
 @interface ChatViewController : JSMessagesViewController
 
+@property (strong,nonatomic) PFObject *chatRoom;
+
 @end

@@ -89,6 +89,14 @@
 {
     return [self.availableChatRooms count];
 }
+
+#pragma mark - TableView Delegates
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"matchesToChatSegue" sender:indexPath];
+}
+
 #pragma mark - Helper Methods
 
 - (void)updateAvailableChatRooms
@@ -112,7 +120,6 @@
     
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -120,7 +127,10 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    ChatViewController *chatVC = segue.destinationViewController;
+    NSIndexPath *indexPath = sender;
+    chatVC.chatRoom = [self.availableChatRooms objectAtIndex:indexPath.row]; 
 }
-*/
 
 @end
