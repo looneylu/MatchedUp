@@ -7,23 +7,20 @@
 //
 
 #import "MatchesViewController.h"
+#import "ChatViewController.h"
 
 @interface MatchesViewController ()
 
+#pragma mark - Properties
+
 @property (strong, nonatomic) IBOutlet UITableView *matchesTableView;
+@property (strong, nonatomic) NSMutableArray *availableChatRooms;
 
 @end
 
 @implementation MatchesViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - viewDidLoad
 
 - (void)viewDidLoad
 {
@@ -31,10 +28,27 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Helper Methods
+
+- (void)updateAvailableChatRooms
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    PFQuery *query = [PFQuery queryWithClassName:@"ChatRoom"];
+    [query whereKey:@"user1" equalTo:[PFUser currentUser]];
+    PFQuery *queryInverse = [PFQuery queryWithClassName:@"ChatRoom"];
+    [query whereKey:@"user2" equalTo:[PFUser currentUser]];
+    PFQuery *queryCombined = [PFQuery orQueryWithSubqueries:@[query, queryInverse]];
+    [queryCombined includeKey:@"chat"];
+    [queryCombined includeKey:@"user1"];
+    [queryCombined includeKey:@"user2"];
+    [queryCombined findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            [self.availableChatRooms removeAllObjects]; 
+            self.availableChatRooms = [objects mutableCopy];
+            [self.matchesTableView reloadData];
+        }
+        }];
+    
 }
 
 /*
