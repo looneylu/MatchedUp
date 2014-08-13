@@ -9,7 +9,7 @@
 #import "MatchesViewController.h"
 #import "ChatViewController.h"
 
-@interface MatchesViewController ()
+@interface MatchesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 #pragma mark - Properties
 
@@ -26,8 +26,52 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.matchesTableView.delegate = self;
+    self.matchesTableView.dataSource = self;
 }
 
+#pragma mark - Lazy Instantiation
+
+- (NSMutableArray *)availableChatRooms
+{
+    if (!_availableChatRooms)
+        _availableChatRooms = [[NSMutableArray alloc] init];
+    
+    return _availableChatRooms;
+}
+
+#pragma mark - TableView setup
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    PFObject *chatroom = [self.availableChatRooms objectAtIndex:indexPath.row];
+    PFUser *likedUser;
+    PFUser *currentUser = [PFUser currentUser];
+    PFUser *testUser1 = chatroom[@"user1"];
+    
+    if ([testUser1.objectId isEqual:currentUser.objectId])
+    {
+        likedUser = [chatroom objectForKey:@"user2"];
+    }
+    else
+    {
+        likedUser = [chatroom objectForKey:@"user1"];
+    }
+    
+    cell.textLabel.text = likedUser[@"profile"][@"firstName"];
+    
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.availableChatRooms count];
+}
 #pragma mark - Helper Methods
 
 - (void)updateAvailableChatRooms
@@ -43,7 +87,7 @@
     [queryCombined findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
-            [self.availableChatRooms removeAllObjects]; 
+            [self.availableChatRooms removeAllObjects];
             self.availableChatRooms = [objects mutableCopy];
             [self.matchesTableView reloadData];
         }
