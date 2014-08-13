@@ -18,6 +18,8 @@
 
 @end
 
+
+#pragma mark - Implementation
 @implementation MatchesViewController
 
 #pragma mark - viewDidLoad
@@ -130,7 +132,7 @@
     
     ChatViewController *chatVC = segue.destinationViewController;
     NSIndexPath *indexPath = sender;
-    chatVC.chatRoom = [self.availableChatRooms objectAtIndex:indexPath.row]; 
+    chatVC.chatRoom = [self.availableChatRooms objectAtIndex:indexPath.row];
 }
 
 @end

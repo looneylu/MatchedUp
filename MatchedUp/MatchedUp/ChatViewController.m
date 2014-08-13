@@ -12,7 +12,13 @@
 @interface ChatViewController ()
 
 #pragma mark - Properties
+@property (strong,nonatomic) PFUser *withUser;
+@property (strong, nonatomic) PFUser *currentUser;
 
+@property (strong, nonatomic) NSTimer *chatsTimer;
+@property (nonatomic) BOOL initialLoadComplete;
+
+@property (strong, nonatomic) NSMutableArray *chats;
 
 @end
 
@@ -24,6 +30,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+#pragma mark - Lazy Instantiation
+
+-(NSMutableArray *)chats
+{
+    if (!_chats)
+        _chats = [[NSMutableArray alloc] init];
+    
+    return _chats;
 }
 
 /*
