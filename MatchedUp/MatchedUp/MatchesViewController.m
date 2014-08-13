@@ -65,6 +65,23 @@
     
     cell.textLabel.text = likedUser[@"profile"][@"firstName"];
     
+    //cell.imageview.image = placeholder image
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    PFQuery *queryForPhoto = [[PFQuery alloc] initWithClassName:@"Photo"];
+    [queryForPhoto whereKey:@"user" equalTo:likedUser];
+    [queryForPhoto findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] > 0)
+        {
+            PFObject *photo = objects[0];
+            PFFile *pictureFile = photo[kCCUserPhotoPictureKey];
+            [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                cell.imageView.image = [UIImage imageWithData:data];
+                cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            }];
+        }
+    }];
+    
     return cell;
 }
 
