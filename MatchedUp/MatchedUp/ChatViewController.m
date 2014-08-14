@@ -9,7 +9,7 @@
 #import "ChatViewController.h"
 
 #pragma mark - Interface
-@interface ChatViewController ()
+@interface ChatViewController () <JSMessagesViewDataSource, JSMessagesViewDelegate>
 
 #pragma mark - Properties
 @property (strong,nonatomic) PFUser *withUser;
@@ -30,6 +30,31 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.delegate = self;
+    self.dataSource = self;
+    
+    [[JSBubbleView appearance] setFont:[UIFont systemFontOfSize:16.0f]];
+    self.messageInputView.textView.placeHolder = @"NewMessage";
+    [self setBackgroundColor:[UIColor whiteColor]];
+    
+    self.currentUser = [PFUser currentUser];
+    PFUser *testUser1 = self.chatRoom[@"user1"];
+    
+    if ([testUser1.objectId isEqual:self.currentUser.objectId])
+        self.withUser = self.chatRoom[@"user2"];
+    else
+        self.withUser = self.chatRoom[@"user1"];
+    
+    self.title = self.withUser[@"profile"][@"firstName"];
+    self.initialLoadComplete = NO;
+}
+
+#pragma mark - Table View Data Source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.chats count];
 }
 
 #pragma mark - Lazy Instantiation
